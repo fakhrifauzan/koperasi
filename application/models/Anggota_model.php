@@ -1,16 +1,21 @@
 <?php
 	class Anggota_model extends CI_Model{
-	
+
 	function __construct(){
 		parent::__construct();
 		$this->load->database();
 	}
 
-	function view_anggota()	{
-		$this->db->select('*');
-		$this->db->from('tbl_anggota');
-		$data = $this->db->get();
-		return $data->result();
+	function view_anggota($param = NULL)	{
+		if ($param == 'simpanan' || $param == 'pinjaman') {
+			$this->db->select('id_anggota, nama_anggota');
+			$this->db->from('tbl_anggota');
+			$data = $this->db->get();
+			return $data->result();
+		} else {
+			$data = $this->db->get('tbl_anggota');
+			return $data->result();
+		}
 	}
 
 	function cek_username($username) {
