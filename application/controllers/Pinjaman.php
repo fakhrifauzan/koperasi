@@ -6,7 +6,7 @@ class Pinjaman extends CI_Controller {
 	public function Pinjaman() {
         parent::__construct();
         $this->load->model('Pinjaman_model');
-  }
+  	}
 
 	public function index()	{
 		$data['pinjaman'] = $this->Pinjaman_model->view_pinjaman();
@@ -20,6 +20,7 @@ class Pinjaman extends CI_Controller {
             'id_anggota' => $this->input->post('id_anggota'),
 			'besar_pinjaman' => $this->input->post('besar_pinjaman'),
             'tgl_pengajuan_pinjaman' => date("Y-m-d"),
+            'jml_angsuran' => $this->input->post('jml_angsuran'),
             // 'tgl_acc_pinjaman' => $this->input->post('tgl_acc_pinjaman'),
             // 'tgl_pinjam' => $this->input->post('tgl_pinjam'),
             // 'tgl_pelunasan' => $this->input->post('tgl_pelunasan'),

@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-    <h1>Data Pinjaman</h1>
-    <a href="<?php echo base_url(); ?>pinjaman/add_pinjaman"><button>Tambah Pinjaman</button></a>
+    <h1>Data Angsuran</h1>
+    <a href="<?php echo base_url(); ?>angsuran/add_angsuran"><button>Tambah Data Angsuran</button></a>
     <br>
     <div id="body">
         <table border="2">
