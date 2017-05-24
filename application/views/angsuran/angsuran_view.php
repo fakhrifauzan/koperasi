@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
           </thead>
           <tbody>
-          <?php $no=1; foreach($pinjaman as $view){
+          <?php $no=1; foreach($angsuran as $view){
           echo "
           <tr>
             <td>$no</td>

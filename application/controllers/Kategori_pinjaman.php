@@ -10,7 +10,8 @@ class Kategori_pinjaman extends CI_Controller {
 
 	public function index()	{
 		$data['kategori_pinjaman'] = $this->Kategori_pinjaman_model->view_kategori();
-		$this->load->view('kategori_pinjaman/kategori_view',$data);
+		$this->template->load('template','kategori_pinjaman/kategori_view',$data);
+		// $this->load->view('kategori_pinjaman/kategori_view',$data);
 	}
 
 	public function add_kategori() {
@@ -21,7 +22,8 @@ class Kategori_pinjaman extends CI_Controller {
             $this->Kategori_pinjaman_model->add_kategori('tbl_pinjaman_kategori',$kategori);
             echo "<script>alert('Data Kategori berhasil disimpan!');location.href='".base_url('kategori_pinjaman')."';</script>";
         } else {
-            $this->load->view('kategori_pinjaman/kategori_tambah');
+			$this->template->load('template','kategori_pinjaman/kategori_tambah',$data);
+            // $this->load->view('kategori_pinjaman/kategori_tambah');
         }
     }
 
@@ -36,7 +38,8 @@ class Kategori_pinjaman extends CI_Controller {
     			'record' => $this->Kategori_pinjaman_model->edit_kategori($id_pinjaman_kategori),
     			);
     		if (!empty($data['record'])) {
-    			$this->load->view('kategori_pinjaman/kategori_edit',$data);
+				$this->template->load('template','kategori_pinjaman/kategori_edit',$data);
+    			// $this->load->view('kategori_pinjaman/kategori_edit',$data);
     		} else {
     			echo "<script>alert('ID Kategori pinjaman tidak ditemukan!');location.href='".base_url('kategori_pinjaman')."';</script>";
     		}

@@ -10,7 +10,8 @@ class Simpanan extends CI_Controller {
 
 	public function index()	{
 		$data['simpanan'] = $this->Simpanan_model->view_simpanan();
-		$this->load->view('simpanan/simpanan_view',$data);
+		$this->template->load('template','simpanan/simpanan_view',$data);
+		// $this->load->view('simpanan/simpanan_view',$data);
 	}
 
 	public function add_simpanan() {
@@ -25,9 +26,10 @@ class Simpanan extends CI_Controller {
             $this->Simpanan_model->add_simpanan('tbl_simpanan',$simpanan);
             echo "<script>alert('Data Simpanan berhasil disimpan!');location.href='".base_url('simpanan')."';</script>";
         } else {
-						$this->load->model('Anggota_model');
-						$data['anggota'] = $this->Anggota_model->view_anggota('simpanan');
-            $this->load->view('simpanan/simpanan_add',$data);
+			$this->load->model('Anggota_model');
+			$data['anggota'] = $this->Anggota_model->view_anggota('simpanan');
+			$this->template->load('template','simpanan/simpanan_add',$data);
+            // $this->load->view('simpanan/simpanan_add',$data);
         }
     }
 	//

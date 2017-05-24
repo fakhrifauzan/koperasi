@@ -11,7 +11,8 @@ class Anggota extends CI_Controller {
 	public function index()
 	{
 		$data['anggota'] = $this->Anggota_model->view_anggota();
-		$this->load->view('anggota/anggota_view',$data);
+		$this->template->load('template','anggota/anggota_view',$data);
+		// $this->load->view('anggota/anggota_view',$data);
 	}
 
   public function cek_username($username) {
@@ -52,7 +53,8 @@ class Anggota extends CI_Controller {
               echo "<script>alert('Username Telah Digunakan!');location.href='".base_url('anggota')."';</script>";
           }
       } else {
-          $this->load->view('anggota/anggota_tambah');
+		  $this->template->load('template','anggota/anggota_tambah');
+        //   $this->load->view('anggota/anggota_tambah');
       }
   }
 
@@ -66,7 +68,8 @@ class Anggota extends CI_Controller {
           $data = array(
               'record' => $this->Anggota_model->edit_anggota($id_anggota),
               );
-          $this->load->view('anggota/anggota_edit',$data);
+		  $this->template->load('template','anggota/anggota_edit',$data);
+		//   $this->load->view('anggota/anggota_edit',$data);
       } else {
           redirect(base_url('anggota'));
       }

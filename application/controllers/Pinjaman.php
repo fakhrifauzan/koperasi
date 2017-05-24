@@ -10,7 +10,8 @@ class Pinjaman extends CI_Controller {
 
 	public function index()	{
 		$data['pinjaman'] = $this->Pinjaman_model->view_pinjaman();
-		$this->load->view('pinjaman/pinjaman_view',$data);
+		$this->template->load('template','pinjaman/pinjaman_view',$data);
+		// $this->load->view('pinjaman/pinjaman_view',$data);
 	}
 
 	public function add_pinjaman() {
@@ -33,7 +34,8 @@ class Pinjaman extends CI_Controller {
 		$data['anggota'] = $this->Anggota_model->view_anggota('pinjaman');
 		$this->load->model('Kategori_pinjaman_model');
 		$data['kategori'] = $this->Kategori_pinjaman_model->view_kategori();
-        $this->load->view('pinjaman/pinjaman_add',$data);
+		$this->template->load('template','pijaman/pinjaman_add',$data);
+        // $this->load->view('pinjaman/pinjaman_add',$data);
       }
     }
 
@@ -54,7 +56,8 @@ class Pinjaman extends CI_Controller {
 				'kategori' => $this->Kategori_pinjaman_model->view_kategori(),
     		);
     		if (!empty($data)) {
-    			$this->load->view('pinjaman/pinjaman_edit',$data);
+				$this->template->load('template','pinjaman/pinjaman_edit',$data);
+    			// $this->load->view('pinjaman/pinjaman_edit',$data);
     		} else {
     			echo "<script>alert('ID Pinjaman tidak ditemukan!');location.href='".base_url('pinjaman')."';</script>";
     		}

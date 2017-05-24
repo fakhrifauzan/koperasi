@@ -10,7 +10,8 @@ class Angsuran extends CI_Controller {
 
 	public function index()	{
 		$data['angsuran'] = $this->Angsuran_model->view_angsuran();
-		$this->load->view('angsuran/angsuran_view',$data);
+		$this->template->load('template','angsuran/angsuran_view',$data);
+		// $this->load->view('angsuran/angsuran_view',$data);
 	}
 
 	// public function add_pinjaman() {
