@@ -6,10 +6,13 @@
 		$this->load->database();
 	}
 
-	function view_simpanan() {
+	function view_simpanan($id_anggota = NULL) {
 		$this->db->select('s.*, a.id_anggota, a.nama_anggota');
 		$this->db->from('tbl_simpanan as s');
 		$this->db->join('tbl_anggota as a','a.id_anggota = s.id_anggota');
+		if ($id_anggota) {
+			$this->db->where('a.id_anggota', $id_anggota);
+		}
 		$data = $this->db->get();
 		return $data->result();
 	}

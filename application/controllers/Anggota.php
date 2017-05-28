@@ -6,6 +6,13 @@ class Anggota extends CI_Controller {
 	public function Anggota() {
         parent::__construct();
         $this->load->model('Anggota_model');
+		if(!$this->session->has_userdata('logged_in')){
+			redirect(base_url("auth"));
+		}
+
+		if($this->session->user_level == "Anggota"){
+			redirect(base_url());
+		}
     }
 
 	public function index()
@@ -31,7 +38,7 @@ class Anggota extends CI_Controller {
           if ($this->cek_username($username)) {
               $user = array(
                   'username' => $this->input->post('username'),
-                  'password' => $this->input->post('password'),
+                  'password' => md5($this->input->post('password')),
                   'user_level' => 'Anggota',
               );
               $id_user = $this->Anggota_model->add_anggota('tbl_user',$user);

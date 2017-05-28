@@ -6,11 +6,14 @@
 		$this->load->database();
 	}
 
-	function view_pinjaman() {
+	function view_pinjaman($id_anggota = NULL) {
 		$this->db->select('p.*, a.id_anggota, a.nama_anggota, k.nama_pinjaman');
 		$this->db->from('tbl_pinjaman as p');
 		$this->db->join('tbl_pinjaman_kategori as k','k.id_pinjaman_kategori = p.id_pinjaman_kategori');
 		$this->db->join('tbl_anggota as a','a.id_anggota = p.id_anggota');
+		if ($id_anggota) {
+			$this->db->where('a.id_anggota', $id_anggota);
+		}
 		$data = $this->db->get();
 		return $data->result();
 	}

@@ -6,6 +6,13 @@ class Kategori_pinjaman extends CI_Controller {
 	public function Kategori_pinjaman() {
         parent::__construct();
         $this->load->model('Kategori_pinjaman_model');
+		if(!$this->session->has_userdata('logged_in')){
+			redirect(base_url("auth"));
+		}
+
+		if($this->session->user_level == "Anggota"){
+			redirect(base_url());
+		}
     }
 
 	public function index()	{
@@ -22,7 +29,7 @@ class Kategori_pinjaman extends CI_Controller {
             $this->Kategori_pinjaman_model->add_kategori('tbl_pinjaman_kategori',$kategori);
             echo "<script>alert('Data Kategori berhasil disimpan!');location.href='".base_url('kategori_pinjaman')."';</script>";
         } else {
-			$this->template->load('template','kategori_pinjaman/kategori_tambah',$data);
+			$this->template->load('template','kategori_pinjaman/kategori_tambah');
             // $this->load->view('kategori_pinjaman/kategori_tambah');
         }
     }

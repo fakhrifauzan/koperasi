@@ -6,6 +6,13 @@ class Petugas extends CI_Controller {
 	public function Petugas() {
         parent::__construct();
         $this->load->model('Petugas_model');
+		if(!$this->session->has_userdata('logged_in')){
+			redirect(base_url("auth"));
+		}
+
+		if($this->session->user_level == "Anggota"){
+			redirect(base_url());
+		}
     }
 
 	public function index()
@@ -32,7 +39,7 @@ class Petugas extends CI_Controller {
         	if ($this->cek_username($username)) {
         		 $user = array(
 	                'username' => $this->input->post('username'),
-	                'password' => $this->input->post('password'),
+	                'password' => md5($this->input->post('password')),
 	                'user_level' => 'Petugas',
 	            );
 	            $id_user = $this->Petugas_model->add_petugas('tbl_user',$user);
@@ -52,7 +59,7 @@ class Petugas extends CI_Controller {
         		echo "<script>alert('Username Telah Digunakan!');location.href='".base_url('petugas')."';</script>";
         	}
         } else {
-			$this->template->load('template','petugas/petugas_tambah',$data);
+			$this->template->load('template','petugas/petugas_tambah');
 			// $this->load->view('petugas/petugas_tambah');
         }
     }

@@ -10,7 +10,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
     <h1>Data Simpanan</h1>
-    <a href="<?php echo base_url(); ?>simpanan/add_simpanan"><button>Tambah Simpanan</button></a>
+    <?php if ($this->session->user_level != "Anggota"): ?>
+        <a href="<?php echo base_url(); ?>simpanan/add_simpanan"><button>Tambah Simpanan</button></a>
+    <?php endif; ?>
     <br>
     <div id="body">
         <table border="2">

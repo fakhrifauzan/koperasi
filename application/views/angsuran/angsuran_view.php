@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td>$view->tgl_pelunasan</td>
             <td>$view->keterangan_pinjaman</td>
             <td>
-              <a href=".base_url().'pinjaman/detail/'.$view->id_pinjaman." title='Edit'>Edit</a>
+              <a href=".base_url().'pinjaman/detail/'.$view->id_pinjaman." title='Detail'>Detail</a>
               <a href=".base_url().'pinjaman/edit_pinjaman/'.$view->id_pinjaman." title='Edit'>Edit</a>
               <a href=".base_url().'pinjaman/delete_pinjaman/'.$view->id_pinjaman." title='Delete'>Delete</a>
             </td>
